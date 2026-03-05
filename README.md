@@ -24,19 +24,63 @@ composer require shipfastlabs/terminal-detector
 
 ```php
 use TerminalDetector\TerminalDetector;
-use function TerminalDetector\detectTerminal;
 
-// Using the class
 $result = TerminalDetector::detect();
 
-// Or using the helper function
-$result = detectTerminal();
+if ($result->detected) {
+    echo "Running inside: {$result->name}";
+}
 
-$result->detected;       // true / false
-$result->name;           // e.g. 'iterm2', 'ghostty', 'vscode'
-$result->version;        // e.g. '3.5.0' (from TERM_PROGRAM_VERSION)
+// Check for a specific known terminal
+if ($result->knownTerminal() === \TerminalDetector\KnownTerminal::Ghostty) {
+    echo "Hello from Ghostty!";
+}
+```
+
+Or use the standalone function:
+
+```php
+use function TerminalDetector\detectTerminal;
+
+$result = detectTerminal();
+```
+
+### Result Properties
+
+```php
+$result->detected;        // true / false
+$result->name;            // e.g. 'iterm2', 'ghostty', 'vscode'
+$result->version;         // e.g. '3.5.0' (from TERM_PROGRAM_VERSION)
 $result->knownTerminal(); // KnownTerminal enum or null
 ```
+
+## Known Terminals
+
+The `KnownTerminal` enum provides type-safe identifiers for all supported terminals:
+
+| Enum Case | Value |
+|---|---|
+| `KnownTerminal::ITerm2` | `iterm2` |
+| `KnownTerminal::AppleTerminal` | `apple-terminal` |
+| `KnownTerminal::VSCode` | `vscode` |
+| `KnownTerminal::Hyper` | `hyper` |
+| `KnownTerminal::WarpTerminal` | `warp` |
+| `KnownTerminal::WezTerm` | `wezterm` |
+| `KnownTerminal::Kitty` | `kitty` |
+| `KnownTerminal::Alacritty` | `alacritty` |
+| `KnownTerminal::Ghostty` | `ghostty` |
+| `KnownTerminal::WindowsTerminal` | `windows-terminal` |
+| `KnownTerminal::JetBrains` | `jetbrains` |
+| `KnownTerminal::Konsole` | `konsole` |
+| `KnownTerminal::GnomeTerminal` | `gnome-terminal` |
+| `KnownTerminal::Tilix` | `tilix` |
+| `KnownTerminal::Tabby` | `tabby` |
+| `KnownTerminal::Rio` | `rio` |
+| `KnownTerminal::Tmux` | `tmux` |
+| `KnownTerminal::Zellij` | `zellij` |
+| `KnownTerminal::Screen` | `screen` |
+| `KnownTerminal::SSHSession` | `ssh` |
+| `KnownTerminal::Xterm` | `xterm` |
 
 ## Supported Terminals
 
