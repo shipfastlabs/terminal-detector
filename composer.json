@@ -1,16 +1,15 @@
 {
-    "name": "nunomaduro/skeleton-php",
-    "description": "A skeleton repository for my packages",
-    "keywords": ["php", "skeleton", "package"],
+    "name": "shipfastlabs/terminal-detector",
+    "description": "Detects which terminal emulator is running the current PHP process",
+    "keywords": ["php", "terminal", "detector", "cli"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Nuno Maduro",
-            "email": "enunomaduro@gmail.com"
+            "name": "Pushpak Chhajed"
         }
     ],
     "require": {
-        "php": "^8.5.0"
+        "php": "^8.2"
     },
     "require-dev": {
         "laravel/pint": "^1.27.1",
@@ -22,8 +21,11 @@
     },
     "autoload": {
         "psr-4": {
-            "NunoMaduro\\SkeletonPhp\\": "src/"
-        }
+            "TerminalDetector\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

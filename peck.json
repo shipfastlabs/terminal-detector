@@ -2,7 +2,26 @@
     "preset": "base",
     "ignore": {
         "words": [
-            "php"
+            "php",
+            "iterm",
+            "wezterm",
+            "alacritty",
+            "ghostty",
+            "kitty",
+            "konsole",
+            "tilix",
+            "tabby",
+            "tmux",
+            "zellij",
+            "xterm",
+            "jetbrains",
+            "gnome",
+            "env",
+            "getenv",
+            "vscode",
+            "warp",
+            "rio",
+            "hyper"
         ]
     }
 }
