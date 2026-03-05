@@ -1,47 +1,71 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/nunomaduro/skeleton-php/master/docs/example.png" height="300" alt="Skeleton Php">
-    <p align="center">
-        <a href="https://github.com/nunomaduro/skeleton-php/actions"><img alt="GitHub Workflow Status (master)" src="https://github.com/nunomaduro/skeleton-php/actions/workflows/tests.yml/badge.svg"></a>
-        <a href="https://packagist.org/packages/nunomaduro/skeleton-php"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/nunomaduro/skeleton-php"></a>
-        <a href="https://packagist.org/packages/nunomaduro/skeleton-php"><img alt="Latest Version" src="https://img.shields.io/packagist/v/nunomaduro/skeleton-php"></a>
-        <a href="https://packagist.org/packages/nunomaduro/skeleton-php"><img alt="License" src="https://img.shields.io/packagist/l/nunomaduro/skeleton-php"></a>
-    </p>
+    <img src="logo.png" height="300" alt="Terminal Detector">
 </p>
 
-------
-This package provides a wonderful **PHP Skeleton** to start building your next package idea.
+# Terminal Detector
 
-> **Requires [PHP 8.5+](https://php.net/releases/)**
+Detects which terminal emulator is running the current PHP process.
 
-⚡️ Create your package using [Composer](https://getcomposer.org):
+> **Requires [PHP 8.2+](https://php.net/releases/)**
+
+## Installation
 
 ```bash
-composer create-project nunomaduro/skeleton-php --prefer-source --remove-vcs PackageName
+composer require shipfastlabs/terminal-detector
 ```
 
-🧹 Keep a modern codebase with **Pint**:
+## Usage
+
+```php
+use TerminalDetector\TerminalDetector;
+use function TerminalDetector\detectTerminal;
+
+// Using the class
+$result = TerminalDetector::detect();
+
+// Or using the helper function
+$result = detectTerminal();
+
+$result->detected;       // true / false
+$result->name;           // e.g. 'iterm2', 'ghostty', 'vscode'
+$result->version;        // e.g. '3.5.0' (from TERM_PROGRAM_VERSION)
+$result->knownTerminal(); // KnownTerminal enum or null
+```
+
+## Supported Terminals
+
+| Terminal | Detection Method |
+|---|---|
+| iTerm2 | `TERM_PROGRAM` |
+| Apple Terminal | `TERM_PROGRAM` |
+| VS Code | `TERM_PROGRAM` |
+| Hyper | `TERM_PROGRAM` |
+| Warp | `TERM_PROGRAM` |
+| WezTerm | `TERM_PROGRAM` |
+| Rio | `TERM_PROGRAM` |
+| Kitty | `KITTY_WINDOW_ID` / `TERM` |
+| Ghostty | `GHOSTTY_RESOURCES_DIR` / `TERM` |
+| Windows Terminal | `WT_SESSION` |
+| JetBrains | `TERMINAL_EMULATOR` |
+| Konsole | `KONSOLE_DBUS_SESSION` / `KONSOLE_VERSION` |
+| Tilix | `TILIX_ID` |
+| GNOME Terminal | `GNOME_TERMINAL_SCREEN` / `VTE_VERSION` |
+| Tabby | `TABBY_CONFIG_DIRECTORY` |
+| Alacritty | `TERM` |
+| Xterm | `TERM` |
+| tmux | `TMUX` |
+| Zellij | `ZELLIJ` |
+| Screen | `STY` |
+| SSH | `SSH_CONNECTION` / `SSH_CLIENT` |
+
+## Custom Override
+
+Set the `TERMINAL_DETECTOR` environment variable to force a specific terminal name:
+
 ```bash
-composer lint
+TERMINAL_DETECTOR=my-terminal php script.php
 ```
 
-✅ Run refactors using **Rector**
-```bash
-composer refactor
-```
+## License
 
-⚗️ Run static analysis using **PHPStan**:
-```bash
-composer test:types
-```
-
-✅ Run unit tests using **PEST**
-```bash
-composer test:unit
-```
-
-🚀 Run the entire test suite:
-```bash
-composer test
-```
-
-**Skeleton PHP** was created by **[Nuno Maduro](https://x.com/enunomaduro)** under the **[MIT license](https://opensource.org/licenses/MIT)**.
+Terminal Detector is open-sourced software licensed under the **[MIT license](https://opensource.org/licenses/MIT)**.
