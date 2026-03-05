@@ -1,5 +1,11 @@
 <p align="center">
-    <img src="logo.png" height="300" alt="Terminal Detector">
+    <img src="docs/logo.png" height="300" alt="Terminal Detector" />
+    <p align="center">
+        <a href="https://github.com/shipfastlabs/terminal-detector/actions"><img alt="GitHub Workflow Status (master)" src="https://github.com/shipfastlabs/terminal-detector/actions/workflows/tests.yml/badge.svg"></a>
+        <a href="https://packagist.org/packages/shipfastlabs/terminal-detector"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/shipfastlabs/terminal-detector"></a>
+        <a href="https://packagist.org/packages/shipfastlabs/terminal-detector"><img alt="Latest Version" src="https://img.shields.io/packagist/v/shipfastlabs/terminal-detector"></a>
+        <a href="https://packagist.org/packages/shipfastlabs/terminal-detector"><img alt="License" src="https://img.shields.io/packagist/l/shipfastlabs/terminal-detector"></a>
+    </p>
 </p>
 
 # Terminal Detector
